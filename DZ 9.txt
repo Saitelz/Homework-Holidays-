@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int strange_sum(int a, int b, int *Array)
+{
+    if (a == b)
+        return Array[a];
+    return strange_sum(a, (a + b)/2, Array) + strange_sum((a + b)/2 + 1, b, Array);
+}
+
+int main() {
+    int a;
+    cin >> a;
+    int* Array = new int[a];
+    for (int i = 0; i < a; i++)
+        cin >> Array[i];
+    cout << strange_sum(0, a - 1, Array);
+    delete [] Array;
+    return 0;
+}
